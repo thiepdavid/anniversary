@@ -8,6 +8,20 @@
 
 <style>
 
+    #pageContent {
+    transition: all 0.5s ease;
+}
+
+.glow-all * {
+    color: #fff;
+    text-shadow:
+        0 0 8px #ff4da6,
+        0 0 18px #ff4da6,
+        0 0 35px #ff1e8a,
+        0 0 60px #ff1e8a;
+}
+
+
     .heart-container {
     text-align: center;
     margin-top: 30px;
@@ -153,6 +167,8 @@
 </head>
 <body>
 
+    <div id="pageContent">
+
     <!-- PASSWORD SCREEN -->
 <div id="lockScreen" style="
     position:fixed;
@@ -200,21 +216,10 @@
     </div>
 </div>
 
-
-<!-- Background Music -->
-<body>
-
 <!-- Background Music -->
 <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
-
-<script>
-    document.addEventListener("click", () => {
-        document.getElementById("bgMusic").play();
-    });
-</script>
-
 
 <div class="overlay">
     <h1>Happy Anniversary &#129294;</h1>
@@ -319,14 +324,24 @@
 </script>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bgMusic");
+    const page = document.getElementById("pageContent");
     const heart = document.querySelector(".neon-heart");
 
+    // Start music + effects on first click
     document.addEventListener("click", () => {
-        music.play().catch(() => {});
-        heart.style.animationPlayState = "running";
+        if (music && music.paused) {
+            music.play().catch(()=>{});
+            page.classList.add("glow-all");
+            if (heart) heart.style.animationPlayState = "running";
+        }
     });
+});
 </script>
+
+
+</div>
 
 </body>
 </html>
