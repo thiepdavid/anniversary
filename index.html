@@ -7,6 +7,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
+
+    .heart-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.neon-heart {
+    width: 120px;
+    fill: #ff2f92;
+    filter: drop-shadow(0 0 10px #ff2f92)
+            drop-shadow(0 0 20px #ff2f92)
+            drop-shadow(0 0 40px #ff2f92);
+    animation: heartbeat 1.2s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.3); }
+    60%  { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.love-text {
+    color: #ff9ecf;
+    font-size: 20px;
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
     body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
@@ -113,9 +143,14 @@
         50% { opacity: 1; }
         100% { transform: translateY(-110vh); opacity: 0; }
     }
+
+    .heart-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
 </style>
 </head>
-
 <body>
 
     <!-- PASSWORD SCREEN -->
@@ -218,7 +253,18 @@
          <img src="surprise.jpg" alt="Our Love"
                  style="width:100%; max-width:350px; border-radius:20px;
                         margin-top:20px; box-shadow:0 10px 25px rgba(0,0,0,0.4);">
-    
+    <div class="heart-container">
+    <svg class="neon-heart" viewBox="0 0 32 29.6">
+        <path d="M23.6,0c-3.4,0-6.4,2-7.6,4.9C14.8,2,11.8,0,8.4,0
+        C3.8,0,0,3.8,0,8.4c0,9.4,16,21.2,16,21.2s16-11.8,16-21.2
+        C32,3.8,28.2,0,23.6,0z"/>
+    </svg>
+
+    <p class="love-text">
+        You are my forever &#129294
+    </p>
+</div>
+
 
 
     </div>
@@ -272,7 +318,15 @@
     }
 </script>
 
+<script>
+    const music = document.getElementById("bgMusic");
+    const heart = document.querySelector(".neon-heart");
 
+    document.addEventListener("click", () => {
+        music.play().catch(() => {});
+        heart.style.animationPlayState = "running";
+    });
+</script>
 
 </body>
 </html>
