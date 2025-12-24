@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Anniversary ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: white;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    .overlay {
+        background: rgba(0,0,0,0.35);
+        min-height: 100vh;
+        padding: 50px 20px;
+    }
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.2em;
+    }
+
+    h2 {
+        font-weight: normal;
+        margin-bottom: 30px;
+    }
+
+    .heart {
+        font-size: 80px;
+        animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.25); }
+        100% { transform: scale(1); }
+    }
+
+    .message {
+        max-width: 750px;
+        margin: auto;
+        font-size: 1.2em;
+        line-height: 1.9;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 50px 0;
+    }
+
+    .gallery img {
+        width: 250px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: transform 0.4s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 1em;
+        border-radius: 30px;
+        border: none;
+        background: white;
+        color: #ff5f7e;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    #surprise {
+        display: none;
+        background: rgba(255,255,255,0.15);
+        margin-top: 30px;
+        padding: 25px;
+        border-radius: 20px;
+        font-size: 1.2em;
+    }
+
+    #qrcode {
+        margin-top: 30px;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 1.1em;
+    }
+
+    .floating-heart {
+        position: fixed;
+        bottom: -10px;
+        font-size: 22px;
+        animation: float 6s linear infinite;
+        opacity: 0.6;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- PASSWORD SCREEN -->
+<div id="lockScreen" style="
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    text-align:center;
+    color:white;
+    font-family:Poppins,sans-serif;
+">
+    <div>
+        <h1>💖 A Message Just For You 💖</h1>
+        <p>Unlock My Heart&#129294</p>
+
+        <input type="password" id="passwordInput"
+            placeholder="Enter password"
+            style="
+                padding:12px;
+                border-radius:25px;
+                border:none;
+                width:220px;
+                text-align:center;
+                font-size:16px;
+            ">
+
+        <br><br>
+
+        <button onclick="unlock()" style="
+            padding:12px 30px;
+            border:none;
+            border-radius:25px;
+            background:white;
+            color:#ff5f7e;
+            font-size:16px;
+            cursor:pointer;
+        ">
+            Unlock 💝
+        </button>
+
+        <p id="error" style="margin-top:15px;color:#ffe6ec;"></p>
+    </div>
+</div>
+
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="overlay">
+    <h1>Happy Anniversary &#129294;</h1>
+    <h2>My Love, <strong>VEE&#129294;</strong></h2>
+
+    <div class="heart">💖</div>
+
+    <div class="message">
+        <p>
+            From the moment you entered my life, everything became brighter.
+            Your love is my safe place, my happiness, and my greatest blessing.
+        </p>
+        <p>
+            Thank you for being my partner, my best friend, and my forever.
+            I promise to love you endlessly, today and always.
+        </p>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+    </div>
+
+    <button onclick="showSurprise()">Tap for a Surprise 💝</button>
+
+    <div id="surprise">
+        Hey My love I Want You To Know That You Are The Most Beautiful Thing In My Life
+            I'll Never Stop Loving You, I Want You In My Future So Bad.
+            I Want My daughters To Have Your Beautiful Eyes And Your Amazing Smile
+            I Want Mini You Running Around Our Home.
+            No matter where life takes us, my heart will always belong to you.
+            I love you more than words can ever explain &#129294;
+
+         <img src="surprise.jpg" alt="Our Love"
+                 style="width:100%; max-width:350px; border-radius:20px;
+                        margin-top:20px; box-shadow:0 10px 25px rgba(0,0,0,0.4);">
+    
+
+
+    </div>
+
+    <!-- QR Code -->
+    <div id="qrcode"></div>
+
+    <footer>
+        THE ONLY MAN THAT WILL BE EATING HER,<br>
+        <strong>Wun Thiep &#129294</strong>
+    </footer>
+</div>
+
+<!-- QR Code Library -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<script>
+    function showSurprise() {
+        document.getElementById("surprise").style.display = "block";
+    }
+
+    // Generate QR Code
+    new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 160,
+        height: 160,
+        colorDark: "#ffffff",
+        colorLight: "transparent"
+    });
+
+    // Floating hearts
+    for (let i = 0; i < 30; i++) {
+        let h = document.createElement("div");
+        h.className = "floating-heart";
+        h.innerHTML = "&#129294";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(h);
+    }
+</script>
+<script>
+    function unlock() {
+        const correctPassword = "Viola/Chance";  // 🔴 CHANGE PASSWORD HERE
+        const input = document.getElementById("passwordInput").value;
+
+        if (input === correctPassword) {
+            document.getElementById("lockScreen").style.display = "none";
+        } else {
+            document.getElementById("error").innerText = "Wrong password 💔 Try again";
+        }
+    }
+</script>
+
+
+
+</body>
+</html>
